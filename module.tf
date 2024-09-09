@@ -124,4 +124,10 @@ resource "azurerm_dns_txt_record" "azurerm_dns_txt_records" {
     }
   }
   tags                = merge(var.tags, try(each.value.tags, {}))
+
+  lifecycle {
+    ignore_changes = [
+      number_of_record_sets
+    ]
+  }
 }
