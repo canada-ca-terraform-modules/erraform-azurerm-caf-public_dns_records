@@ -14,17 +14,14 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.7.0
+      - uses: actions/checkout@v4.1.7
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Render terraform docs inside the README.md and push changes back to PR branch
-        uses: terraform-docs/gh-actions@v1.0.0
+        uses: terraform-docs/gh-actions@v1.2.1
         with:
-          find-dir: .
+          working-dir: .
           output-file: README.md
           output-method: inject
-          git-push: 'true'
-
-      - name: Set environment variable with output value
-        run: echo "OUTPUT_FILE=README.md" >> $GITHUB_ENV
+          git-push: "true
